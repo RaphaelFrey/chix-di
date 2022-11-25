@@ -1,9 +1,6 @@
 package com.chixsaw.chixdi;
 
-import com.chixsaw.chixdi.controllers.ConstructorInjectedController;
-import com.chixsaw.chixdi.controllers.MyController;
-import com.chixsaw.chixdi.controllers.PropertyInjectedController;
-import com.chixsaw.chixdi.controllers.SetterInjectedController;
+import com.chixsaw.chixdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,9 @@ public class ChixDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(ChixDiApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayGreeting());
 
 		MyController myController = (MyController) ctx.getBean("myController");
 		System.out.println("---------------- Primary Bean");
