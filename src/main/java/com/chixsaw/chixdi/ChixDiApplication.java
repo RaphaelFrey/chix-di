@@ -14,6 +14,10 @@ public class ChixDiApplication {
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		System.out.println(i18nController.sayGreeting());
 
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println("--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
+
 		MyController myController = (MyController) ctx.getBean("myController");
 		System.out.println("---------------- Primary Bean");
 		System.out.println(myController.sayHello());
