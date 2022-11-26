@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dog, EN
+chixsaw:
+  username: YmlUserName
+  password: YmlPassword
+  jdbcUrl: YmlUrl
