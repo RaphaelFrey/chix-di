@@ -1,10 +1,10 @@
 package com.chixsaw.chixdi.config;
 
-import com.chixsaw.chixdi.services.ConstructorGreetingService;
-import com.chixsaw.chixdi.services.PropertyInjectedGreetingService;
-import com.chixsaw.chixdi.services.SetterInjectedGreetingService;
+import com.chixsaw.chixdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 /**
  * Created by Raphael Frey on 26.11.2022
@@ -12,6 +12,24 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    @Primary
+    PrimaryGreetingService primaryGreetingService() {
+        return new PrimaryGreetingService();
+    }
+
+    @Profile("EN")
+    @Bean("i18nService")
+    I118nEnglishGreetingService i118nEnglishGreetingService() {
+        return new I118nEnglishGreetingService();
+    }
+
+    @Profile("DE")
+    @Bean
+    I18NGermanGreetingService i18nService() {
+        return new I18NGermanGreetingService();
+    }
 
     @Bean
     ConstructorGreetingService constructorGreetingService() {
