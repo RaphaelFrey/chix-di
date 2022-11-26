@@ -1,7 +1,7 @@
 package com.chixsaw.chixdi.controllers;
 
 
-import com.chixsaw.chixdi.services.PetService;
+import com.springframework.pets.PetService;
 import org.springframework.stereotype.Controller;
 
 /**
