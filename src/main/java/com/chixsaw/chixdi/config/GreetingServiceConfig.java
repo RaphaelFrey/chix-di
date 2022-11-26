@@ -5,15 +5,13 @@ import com.chixsaw.chixdi.repositories.EnglishGreetingRepositoryImpl;
 import com.chixsaw.chixdi.services.*;
 import com.springframework.pets.PetService;
 import com.springframework.pets.PetServiceFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
 /**
  * Created by Raphael Frey on 26.11.2022
  * Most used with 3. Party libs.
  */
+@ImportResource("classpath:chixdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -55,11 +53,6 @@ public class GreetingServiceConfig {
     @Bean
     I18nGermanGreetingService i18nService() {
         return new I18nGermanGreetingService();
-    }
-
-    @Bean
-    ConstructorGreetingService constructorGreetingService() {
-        return new ConstructorGreetingService();
     }
 
     @Bean
