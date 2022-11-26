@@ -13,7 +13,6 @@ import org.springframework.context.annotation.*;
  * Created by Raphael Frey on 26.11.2022
  * Most used with 3. Party libs.
  */
-@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:chixdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
