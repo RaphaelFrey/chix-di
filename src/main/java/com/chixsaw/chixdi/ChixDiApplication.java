@@ -1,6 +1,7 @@
 package com.chixsaw.chixdi;
 
 import com.chixsaw.chixdi.controllers.*;
+import com.chixsaw.chixdi.datasource.FakeDataSource;
 import com.chixsaw.chixdi.services.PrototypeBean;
 import com.chixsaw.chixdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -46,6 +47,11 @@ public class ChixDiApplication {
 		System.out.println(prototypeBean1.getMyScope());
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
+
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcUrl());
 	}
 
 }
