@@ -1,7 +1,20 @@
 spring:
   profiles:
-    active: dog, EN, dev
+    active:
+      - dog
+      - EN
+      - prod
 chixsaw:
   username: YmlUserName
   password: YmlPassword
   jdbcUrl: YmlUrl
+
+---
+chixsaw:
+  username: YmlProdUserName
+  password: YmlProdPassword
+  jdbcUrl: YmlProdUrl
+spring:
+  config:
+    activate:
+      on-profile: prod
