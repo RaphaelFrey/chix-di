@@ -1,5 +1,6 @@
 package com.chixsaw.chixdi;
 
+import com.chixsaw.chixdi.config.ChixConfiguration;
 import com.chixsaw.chixdi.controllers.*;
 import com.chixsaw.chixdi.datasource.FakeDataSource;
 import com.chixsaw.chixdi.services.PrototypeBean;
@@ -52,6 +53,12 @@ public class ChixDiApplication {
 		System.out.println(fakeDataSource.getUsername());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcUrl());
+
+		System.out.println("--------- Config Props Bean");
+		ChixConfiguration chixConfiguration = ctx.getBean(ChixConfiguration.class);
+		System.out.println(chixConfiguration.getUsername());
+		System.out.println(chixConfiguration.getPassword());
+		System.out.println(chixConfiguration.getJdbcUrl());
 	}
 
 }

@@ -6,7 +6,6 @@ import com.chixsaw.chixdi.repositories.EnglishGreetingRepositoryImpl;
 import com.chixsaw.chixdi.services.*;
 import com.springframework.pets.PetService;
 import com.springframework.pets.PetServiceFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 /**
@@ -18,13 +17,11 @@ import org.springframework.context.annotation.*;
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(@Value("${chixsaw.username}") String username,
-                                  @Value("${chixsaw.password}") String password,
-                                  @Value("${chixsaw.jdbcUrl}") String jdbcUrl) {
+    FakeDataSource fakeDataSource(ChixConfiguration chixConfiguration) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcUrl);
+        fakeDataSource.setUsername(chixConfiguration.getUsername());
+        fakeDataSource.setPassword(chixConfiguration.getPassword());
+        fakeDataSource.setJdbcUrl(chixConfiguration.getJdbcUrl());
         return fakeDataSource;
     }
 
