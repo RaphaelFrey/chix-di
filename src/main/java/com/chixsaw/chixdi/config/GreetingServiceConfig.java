@@ -1,5 +1,7 @@
 package com.chixsaw.chixdi.config;
 
+import com.chixsaw.chixdi.repositories.EnglishGreetingRepository;
+import com.chixsaw.chixdi.repositories.EnglishGreetingRepositoryImpl;
 import com.chixsaw.chixdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,16 +21,21 @@ public class GreetingServiceConfig {
         return new PrimaryGreetingService();
     }
 
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository() {
+        return new EnglishGreetingRepositoryImpl();
+    }
+
     @Profile("EN")
     @Bean("i18nService")
-    I118nEnglishGreetingService i118nEnglishGreetingService() {
-        return new I118nEnglishGreetingService();
+    I18nEnglishGreetingService i18nEnglishGreetingService(EnglishGreetingRepository englishGreetingRepository) {
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
     @Profile("DE")
     @Bean
-    I18NGermanGreetingService i18nService() {
-        return new I18NGermanGreetingService();
+    I18nGermanGreetingService i18nService() {
+        return new I18nGermanGreetingService();
     }
 
     @Bean
