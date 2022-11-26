@@ -6,22 +6,24 @@ import com.chixsaw.chixdi.repositories.EnglishGreetingRepositoryImpl;
 import com.chixsaw.chixdi.services.*;
 import com.springframework.pets.PetService;
 import com.springframework.pets.PetServiceFactory;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
 /**
  * Created by Raphael Frey on 26.11.2022
  * Most used with 3. Party libs.
  */
+@EnableConfigurationProperties(ChixConstructorConfig.class)
 @ImportResource("classpath:chixdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(ChixConfiguration chixConfiguration) {
+    FakeDataSource fakeDataSource(ChixConstructorConfig chixConstructorConfig) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(chixConfiguration.getUsername());
-        fakeDataSource.setPassword(chixConfiguration.getPassword());
-        fakeDataSource.setJdbcUrl(chixConfiguration.getJdbcUrl());
+        fakeDataSource.setUsername(chixConstructorConfig.getUsername());
+        fakeDataSource.setPassword(chixConstructorConfig.getPassword());
+        fakeDataSource.setJdbcUrl(chixConstructorConfig.getJdbcUrl());
         return fakeDataSource;
     }
 

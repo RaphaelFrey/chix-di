@@ -1,6 +1,7 @@
 package com.chixsaw.chixdi;
 
 import com.chixsaw.chixdi.config.ChixConfiguration;
+import com.chixsaw.chixdi.config.ChixConstructorConfig;
 import com.chixsaw.chixdi.controllers.*;
 import com.chixsaw.chixdi.datasource.FakeDataSource;
 import com.chixsaw.chixdi.services.PrototypeBean;
@@ -59,6 +60,12 @@ public class ChixDiApplication {
 		System.out.println(chixConfiguration.getUsername());
 		System.out.println(chixConfiguration.getPassword());
 		System.out.println(chixConfiguration.getJdbcUrl());
+
+		System.out.println("------------ Constructor Binding");
+		ChixConstructorConfig chixConstructorConfig = ctx.getBean(ChixConstructorConfig.class);
+		System.out.println(chixConstructorConfig.getUsername());
+		System.out.println(chixConstructorConfig.getPassword());
+		System.out.println(chixConstructorConfig.getJdbcUrl());
 	}
 
 }
